@@ -29,10 +29,16 @@ def main():
     average = sum(marks) / len(marks)
     rounded_average = round(average, 4)
     
-    if rounded_average >= 40:
-        print("Pass")
+    if rounded_average >= 75:
+        grade = "A"
+    elif rounded_average >= 60:
+        grade = "B"
+    elif rounded_average > 40:
+        grade = "C"
     else:
-        print("Fail")
+        grade = "F"
+        
+    print(f"Grade: {grade}")
 
 if __name__ == "__main__":
     main()
