@@ -32,18 +32,32 @@ def main():
             marks.append(get_valid_mark(i))
         
         average = sum(marks) / len(marks)
-        rounded_average = round(average, 4)
+        # Formatted average to remove unnecessary trailing zeros if it's a whole number
+        display_avg = round(average, 2)
         
-        if rounded_average >= 75:
+        if display_avg >= 75:
             grade = "A"
-        elif rounded_average >= 60:
+        elif display_avg >= 60:
             grade = "B"
-        elif rounded_average > 40:
+        elif display_avg > 40:
             grade = "C"
         else:
             grade = "F"
             
-        print(f"Grade: {grade}")
+        # --- Formatting Logic ---
+        line_name = f"Name: {name}"
+        line_avg = f"Average: {display_avg}"
+        line_grade = f"Grade: {grade}"
+        
+        # Find the longest string to determine separator length
+        max_len = max(len(line_name), len(line_avg), len(line_grade))
+        separator = "-" * (max_len + 4) # Added padding for aesthetic
+        
+        print(separator)
+        print(line_name)
+        print(line_avg)
+        print(line_grade)
+        print(separator)
 
 if __name__ == "__main__":
     main()
