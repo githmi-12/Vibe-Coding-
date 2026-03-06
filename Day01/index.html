@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile Card</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .profile-card {
+            width: 350px;
+            height: 550px;
+            background-color: white;
+            border: 5px solid black;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Top Red Section */
+        .header-slope {
+            height: 140px;
+            background: linear-gradient(to right, #ff0000, #800000);
+            clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            position: relative;
+        }
+
+        .header-slope::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: black;
+            z-index: 3;
+        }
+
+        .student-name {
+            font-family: "French Script MT", cursive;
+            font-size: 25pt;
+            font-weight: bold;
+            color: black;
+            margin-bottom: 25px; 
+        }
+
+        /* White Content Area with Blurred Background */
+        .white-content-area {
+            flex: 1; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; 
+            z-index: 1;
+            padding: 20px 0;
+            margin-top: -80px; 
+            position: relative;
+            background-image: url('hogwarts_background.jpg'); 
+            background-size: cover;
+            background-position: center;
+        }
+
+        .white-content-area::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255, 255, 255, 0.4); 
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: -1;
+        }
+
+        .image-placeholder {
+            width: 110px;
+            height: 110px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 4px solid black;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            margin-bottom: 15px;
+            z-index: 2;
+        }
+
+        .stream {
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            color: black;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .bio {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 12pt;
+            font-style: italic;
+            text-align: center;
+            padding: 0 45px;
+            line-height: 1.4;
+            color: black;
+            margin: 0;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+        }
+
+        /* UPDATED: Blending the Logo into the Gradient */
+        .logo-bottom-right {
+            position: absolute;
+            bottom: 10px; /* Lowered to overlap the footer gradient */
+            right: 10px;
+            width: 85px; 
+            height: auto;
+            z-index: 10;
+            /* This blends the crest colors into the background gradient */
+            mix-blend-mode: multiply; 
+            opacity: 0.9;
+        }
+
+        /* Bottom Red Section */
+        .footer-slope {
+            height: 100px;
+            background: linear-gradient(to right, #800000, #ff0000);
+            clip-path: polygon(0 40%, 100% 0, 100% 100%, 0 100%);
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            z-index: 2;
+        }
+
+        .footer-slope::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-card">
+        <div class="header-slope">
+            <div class="student-name">Harry Potter</div>
+        </div>
+
+        <div class="white-content-area">
+            <div class="image-placeholder">PHOTO</div>
+            
+            <div class="stream">DEFENCE AGAINST THE DARK ARTS</div>
+            
+            <div class="bio">
+                I am a dedicated student mastering protective enchantments. I lead my Quidditch team and aim to protect the wizarding community.
+            </div>
+
+            <img src="ucsc_logo.png" alt="School Crest" class="logo-bottom-right">
+        </div>
+
+        <div class="footer-slope"></div>
+    </div>
+
+</body>
+</html>
